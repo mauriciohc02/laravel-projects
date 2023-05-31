@@ -1,0 +1,110 @@
+#about {
+    height: 60vh;
+}
+
+#about-cont {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#about-cont .col-right {
+    width: 50%;
+    text-align: justify;
+}
+
+#about-cont .col-right h2 {
+    font-size: 1.7rem;
+}
+
+#about-cont .col-left {
+    width: 20%;
+}
+
+
+
+#curriculum {
+    height: 105vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e0e0e0;
+}
+
+
+.cards {
+    width: 50%;
+    height: 240px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards h2 {
+    text-align: left;
+    font-size: 1.7rem;
+}
+
+.cards .col-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cards .col-right {
+    width: 50%;
+    background-position: center;
+    background-size: contain;
+}
+
+.cards .col-right img {
+    width: 100%;
+}
+
+
+
+#multimedia {
+    height: 80vh;
+}
+
+.videos {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.column {
+    width: calc(33% - 20px);
+    margin-bottom: 20px;
+}
+
+.column iframe {
+    display: block;
+    width: 560;
+    height: 315;
+}
+
+
+
+#contact {
+    height: 20vh;
+    background-color: #e0e0e0;
+}
+
+#contact .title {
+    margin-top: 10px;
+}
+
+.my-contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    font-size: large;
+    color: black;
+}
