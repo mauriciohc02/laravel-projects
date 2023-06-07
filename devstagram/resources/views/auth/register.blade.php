@@ -24,12 +24,14 @@
                             border-red-500
                         @enderror"
                         value="{{ old('name') }}">
+
+                    @error('name')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                            {{ $message }}
+                        </p>
+                    @enderror
                 </div>
-                @error('name')
-                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
-                        {{ $message }}
-                    </p>
-                @enderror
+
 
                 <div class="mb-5">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -41,12 +43,14 @@
                             border-red-500
                         @enderror"
                         value="{{ old('username') }}">
+
+                    @error('username')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                            {{ $message }}
+                        </p>
+                    @enderror
                 </div>
-                @error('username')
-                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
-                        {{ $message }}
-                    </p>
-                @enderror
+
 
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -58,12 +62,14 @@
                             border-red-500
                         @enderror"
                         value="{{ old('email') }}">
+
+                    @error('email')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                            {{ $message }}
+                        </p>
+                    @enderror
                 </div>
-                @error('email')
-                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
-                        {{ $message }}
-                    </p>
-                @enderror
+
 
                 <div class="mb-5">
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -74,12 +80,14 @@
                         @error('password')
                             border-red-500
                         @enderror">
+
+                    @error('password')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                            {{ $message }}
+                        </p>
+                    @enderror
                 </div>
-                @error('password')
-                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
-                        {{ $message }}
-                    </p>
-                @enderror
+
 
                 <div class="mb-5">
                     <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">
