@@ -9,21 +9,30 @@ const dropzone = new Dropzone('#dropzone', {
     addRemoveLinks: true,
     dictRemoveFile: 'Borrar Archivo',
     maxFiles: 1,
-    uploadMultiple: false
-});
+    uploadMultiple: false,
 
-dropzone.on('sending', function (file, xhr, formData) {
-    console.log(file);
+    init: function () {
+        // En caso que tenga value, lo tomará para llenar los atributos de dropzone
+        if (document.querySelector('[name="imagen"]').value.trim()) {
+            const imagenPublicada = {};
+
+            imagenPublicada.size = 1234;
+            imagenPublicada.name = document.querySelector('[name="imagen"]').value;
+
+            this.options.addedfile.call(this, imagenPublicada);
+            this.options.thumbnail.call(this, imagenPublicada, `/uploads/${imagenPublicada.name}`);
+
+            imagenPublicada.previewElement.classList.add('dz-success', 'dz-complete');
+        }
+    }
 });
 
 dropzone.on('success', function (file, response) {
-    console.log(response);
-});
-
-dropzone.on('error', function (file, message) {
-    console.log(message);
+    // Asigna el value de la imagen (nombre) en el input oculto de create.blade.php
+    document.querySelector('[name="imagen"]').value = response.imagen;
 });
 
 dropzone.on('removedfile', function () {
-    console.log('Archivo eliminado');
+    // Para resetear el valor cuando se elimine la imagen
+    document.querySelector('[name="imagen"]').value = '';
 });
