@@ -38,7 +38,7 @@
         <h2 class="text-4xl text-center font-black my-10">
             Posts
         </h2>
-        
+
         {{--
 
         <table>
@@ -59,13 +59,15 @@
         </table>
 
         --}}
-        
+
         @if ($posts->count())
             <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @foreach ($posts as $post)
                     <div>
-                        <a href="#">
-                            <img src="{{ asset('uploads/') . '/' . $post->imagen }}"
+                        <a href="{{ route('posts.show', ['user' => $user, 'post' => $post]) }}">
+                            {{-- class="transition-all duration-300 rounded-lg shadow-xl cursor-pointer filter grayscale hover:grayscale-0" --}}
+                            <img class="transition duration-300 ease-in-out hover:scale-110 rounded-lg shadow-xl"
+                                src="{{ asset('uploads/') . '/' . $post->imagen }}"
                                 alt="Imagen de Post {{ $post->titulo }}">
                         </a>
                     </div>
@@ -73,7 +75,7 @@
             </div>
 
             <div class="my-10">
-                {{-- Agrega "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php" al tailwind.config.js para los styeles--}}
+                {{-- Agrega "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php" al tailwind.config.js para los styeles --}}
                 {{ $posts->links('pagination::tailwind') }}
             </div>
         @else
@@ -81,6 +83,6 @@
                 Ningún Post por mostrar
             </p>
         @endif
-        
+
     </section>
 @endsection

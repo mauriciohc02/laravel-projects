@@ -48,7 +48,7 @@
                         class="border p-3 w-full rounded-lg
                         @error('descripcion')
                             border-red-500
-                        @enderror"></textarea>
+                        @enderror">{{ old('descripcion') }}</textarea>
 
                     @error('descripcion')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">

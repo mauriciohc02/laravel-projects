@@ -11,7 +11,8 @@ class PostController extends Controller
     public function __construct()
     {
         // Para verificar que el user este autenticado
-        $this->middleware('auth');
+        // except() es para indicar cuales metodos pueden usarse sin autenticarse
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     public function index(User $user)
@@ -74,5 +75,12 @@ class PostController extends Controller
         */
 
         return redirect()->route('posts.index', auth()->user()->username);
+    }
+
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post
+        ]);
     }
 }
