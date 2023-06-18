@@ -43,4 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Crea relacion One to Many, un user con muchos posts
+    public function posts()
+    {
+        // hasMany() es la relacion One to Many
+        return $this->hasMany(Post::class);
+        // $ sail artisan tinker
+        // > $usuario = User::find(2);
+        // > $usuario->posts;
+    }
 }

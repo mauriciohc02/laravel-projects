@@ -16,8 +16,13 @@ class PostController extends Controller
 
     public function index(User $user)
     {
+        // Query a la tabla posts en la DB usando el user_id
+        // $posts = Post::where('user_id', $user->id)->get();
+        $posts = Post::where('user_id', $user->id)->paginate(12);
+        // Retorna la view y pasa los valores
         return view('dashboard', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts
         ]);
     }
 
@@ -55,6 +60,17 @@ class PostController extends Controller
         $post->user_id = auth()->user()->id;
         // Se guarda
         $post->save();
+        */
+
+        // Otra forma de crear registros
+        // Se requiere hacer las relaciones entre los Models (User-Post)
+        /*
+        $request->user()->posts()->create([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'imagen' => $request->imagen,
+            'user_id' => auth()->user()->id
+        ]);
         */
 
         return redirect()->route('posts.index', auth()->user()->username);

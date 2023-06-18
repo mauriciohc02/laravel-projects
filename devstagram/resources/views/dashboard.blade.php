@@ -33,4 +33,54 @@
             </div>
         </div>
     </div>
+
+    <section class="container mx-auto mt-10">
+        <h2 class="text-4xl text-center font-black my-10">
+            Posts
+        </h2>
+        
+        {{--
+
+        <table>
+            <tr>
+                <th>titulo</th>
+                <th>descripcion</th>
+                <th>imagen</th>
+                <th>user_id</th>
+            </tr>
+            @foreach ($posts as $post)
+                <tr>
+                    <td>{{ $post->titulo }}</td>
+                    <td>{{ $post->descripcion }}</td>
+                    <td>{{ $post->imagen }}</td>
+                    <td>{{ $post->user_id }}</td>
+                </tr>
+            @endforeach
+        </table>
+
+        --}}
+        
+        @if ($posts->count())
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                @foreach ($posts as $post)
+                    <div>
+                        <a href="#">
+                            <img src="{{ asset('uploads/') . '/' . $post->imagen }}"
+                                alt="Imagen de Post {{ $post->titulo }}">
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="my-10">
+                {{-- Agrega "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php" al tailwind.config.js para los styeles--}}
+                {{ $posts->links('pagination::tailwind') }}
+            </div>
+        @else
+            <p class="text-gray-600 uppercase text-sm text-center font-bold">
+                Ningún Post por mostrar
+            </p>
+        @endif
+        
+    </section>
 @endsection

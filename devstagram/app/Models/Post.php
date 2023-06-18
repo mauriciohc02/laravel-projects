@@ -16,4 +16,14 @@ class Post extends Model
         'imagen',
         'user_id'
     ];
+
+    // Crea relacion Belongs To, un post pertenece a un usuario
+    public function user()
+    {
+        // belongsTo() es la relacion Belongs To
+        return $this->belongsTo(User::class)->select(['name', 'username']); // select() para traer los campos solicitados
+        // $ sail artisan tinker
+        // > $post = App\Models\Post::find(1);
+        // > $post->user;
+    }
 }
