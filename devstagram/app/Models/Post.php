@@ -26,4 +26,14 @@ class Post extends Model
         // > $post = App\Models\Post::find(1);
         // > $post->user;
     }
+
+    // Crea relacion One to Many, un post con muchos comentarios
+    public function comentarios()
+    {
+        // hasMany() es la relacion One to Many
+        return $this->hasMany(Comentario::class);
+        // $ sail artisan tinker
+        // > $post = App\Models\Post::find(1);
+        // > $post->comentarios;
+    }
 }

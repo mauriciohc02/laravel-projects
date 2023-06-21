@@ -75,7 +75,7 @@
             </div>
 
             <div class="my-10">
-                {{-- Agrega "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php" al tailwind.config.js para los styeles --}}
+                {{-- Agrega "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php" al tailwind.config.js para los styles --}}
                 {{ $posts->links('pagination::tailwind') }}
             </div>
         @else
