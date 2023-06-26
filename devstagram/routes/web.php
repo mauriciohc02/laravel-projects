@@ -42,5 +42,6 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
 
 Route::post('/{user:username}/posts/{post}', [ComentarioController::class, 'store'])->name('comentarios.store');
+Route::delete('/{user:username}/posts/{post}/{comentario}', [ComentarioController::class, 'destroy'])->name('comentarios.destroy');
 
 // Ejecuta para compilar estilos y JS: $ sail npm run build

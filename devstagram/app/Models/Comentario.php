@@ -20,7 +20,7 @@ class Comentario extends Model
     public function user()
     {
         // belongsTo() es la relacion Belongs To
-        return $this->belongsTo(User::class)->select(['name', 'username']); // select() para traer los campos solicitados
+        return $this->belongsTo(User::class);
         // $ sail artisan tinker
         // > $comentario = App\Models\Comentario::find(2);
         // > $comentario->user;

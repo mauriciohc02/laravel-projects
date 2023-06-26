@@ -100,6 +100,19 @@
                                 <p class="text-sm text-gray-500 text-right">
                                     {{ $comentario->created_at->diffForHumans() }}
                                 </p>
+
+                                @auth
+                                    {{-- Para saber si el user autenticado es quien esta en el comentario para eliminar --}}
+                                    @if ($comentario->user->id === auth()->user()->id)
+                                        <form class="text-right" action="{{ route('comentarios.destroy', ['user' => $post->user, 'post' => $post, 'comentario' => $comentario]) }}" method="POST">
+                                            {{-- Spoofing Method: Permite agregar otro tipo de peticiones --}}
+                                            @method('DELETE')
+                                            @csrf
+                                            <input type="submit" value="Eliminar Comentario"
+                                                class="bg-red-500 hover:bg-red-600 p-2 rounded-lg text-white font-bold mt-4 cursor-pointer">
+                                        </form>
+                                    @endif
+                                @endauth
                             </div>
                         @endforeach
                     @else

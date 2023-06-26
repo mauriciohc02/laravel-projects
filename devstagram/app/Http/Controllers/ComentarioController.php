@@ -27,4 +27,15 @@ class ComentarioController extends Controller
 
         return back()->with('mensaje', 'Comentario Realizado Correctamente');
     }
+
+    public function destroy(User $user, Post $post, Comentario $comentario)
+    {
+        // Usa ComentarioPolicy para determinar si el user es capaz de hacer tal acción
+        $this->authorize('delete', $comentario);
+        // Como si se hiciera un DELETE FROM comentarios WHERE id=$comentario->id;
+        $comentario->delete();
+
+        // Redirecciona
+        return redirect()->route('posts.show', ['user' => $user->username, 'post' => $post]);
+    }
 }
