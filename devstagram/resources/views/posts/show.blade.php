@@ -31,6 +31,19 @@
                     {{ $post->descripcion }}
                 </p>
             </div>
+
+            @auth
+                {{-- Para saber si el user autenticado es quien esta en el post para eliminar --}}
+                @if ($post->user_id === auth()->user()->id)
+                    <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                        {{-- Spoofing Method: Permite agregar otro tipo de peticiones --}}
+                        @method('DELETE')
+                        @csrf
+                        <input type="submit" value="Eliminar Post"
+                            class="bg-red-500 hover:bg-red-600 p-2 rounded-lg text-white font-bold mt-4 cursor-pointer">
+                    </form>
+                @endif
+            @endauth
         </div>
 
         <div class="md:w-1/2 p-5">
@@ -71,7 +84,8 @@
                 @endauth
 
                 <div class="bg-white rounded-lg shadow-xl mb-5 max-h-96 overflow-y-scroll mt-10">
-                    @if ($post->comentarios->count()) {{-- Si hay al menos 1 comentario --}}
+                    @if ($post->comentarios->count())
+                        {{-- Si hay al menos 1 comentario --}}
                         @foreach ($post->comentarios as $comentario)
                             <div class="p-5 border-gray-300 border-b">
                                 {{-- Lleva a ruta /{user:username} --}}

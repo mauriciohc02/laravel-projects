@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained(); // El comentario es de un usuario
-            $table->foreignId('post_id')->constrained(); // El comentario es de un post
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Si un user elimina cuenta, se lleva sus comentarios
+            $table->foreignId('post_id')->constrained()->onDelete('cascade'); // Si un post se elimina, se lleva sus comentarios
             $table->string('comentario');
             $table->timestamps();
             // $ sail artisan migrate
